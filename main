@@ -1,49 +1,34 @@
-# Importing the shutil and os libraries
-# shutil provides functions for high-level file operations like copying and moving
-# os provides functions to interact with the operating system (like file and directory handling)
 import shutil 
 import os
 
-# Defining the list of folder names where different file types will be organized
 folders = ["documents", "image", "txt", "combine"]
 
-# Specifying the base directory path where all folders and files will be created
 base_dir = "D:\\SHUTIL\\"
 
-# Creating main directory structure
 for folder in folders:
-    # Check if the base directory exists; if not, create it
     if not os.path.exists(base_dir):
         os.mkdir(base_dir)
-    
-    # Creating subfolders inside the base directory
     folder_path = os.path.join(base_dir, folder)
     os.mkdir(folder_path)
 
-# Creating sample files for demonstration
-for i in range(1, 4):
-    # Creating empty .jpg, .pdf, and .txt files in the 'combine' folder
-    open(f"D:\\SHUTIL\\combine\\file {i}.jpg", 'w')  # Sample image file
-    open(f"D:\\SHUTIL\\combine\\file {i}.pdf", 'w')  # Sample document file
-    open(f"D:\\SHUTIL\\combine\\file {i}.txt", 'w')  # Sample text file
 
-# Listing all files in the 'combine' folder
+for i in range(1, 4):
+    open(f"D:\\SHUTIL\\combine\\file {i}.jpg", 'w')  
+    open(f"D:\\SHUTIL\\combine\\file {i}.pdf", 'w')  
+    open(f"D:\\SHUTIL\\combine\\file {i}.txt", 'w')  
+
+
 file_list = os.listdir("D:\\SHUTIL\\combine\\")
 
-# Looping through each file in the 'combine' folder
 for file in file_list:
-    # Defining the source path of the current file
     src_path = f"D:\\SHUTIL\\combine\\{file}"
-    
-    # Extracting the file extension to determine the type of file
     file_extension = file.split(".")[1]
-    
-    # Moving files to their respective folders based on file extension
+
     if file_extension == "jpg":
-        shutil.move(src_path, "D:\\SHUTIL\\image")  # Move images to 'image' folder
+        shutil.move(src_path, "D:\\SHUTIL\\image") 
 
     elif file_extension == "pdf":
-        shutil.move(src_path, "D:\\SHUTIL\\documents")  # Move PDFs to 'documents' folder
+        shutil.move(src_path, "D:\\SHUTIL\\documents")  
 
     elif file_extension == "txt":
-        shutil.move(src_path, "D:\\SHUTIL\\txt")  # Move text files to 'txt' folder
+        shutil.move(src_path, "D:\\SHUTIL\\txt")  
